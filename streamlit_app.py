@@ -1,6 +1,8 @@
 import requests
 from datetime import date, timedelta, datetime
 
+import pandas as pd
+
 from PIL import Image, UnidentifiedImageError
 import numpy as np
 from io import BytesIO
