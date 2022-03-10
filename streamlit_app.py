@@ -1,6 +1,6 @@
 import requests
 from datetime import date, timedelta, datetime
-# import cv2
+
 from PIL import Image, UnidentifiedImageError
 import numpy as np
 from io import BytesIO
