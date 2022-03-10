@@ -1,2 +1,5 @@
 [packages]
 opencv-python-headless = ">=4.5"
+matplotlib
+OpenCV
+tensorflow-cpu
