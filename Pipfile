@@ -1,2 +1,6 @@
 [packages]
 opencv-python-headless = ">=4.5"
+scikit-learn
+matplotlib
+OpenCV
+tensorflow-cpu
