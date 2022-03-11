@@ -203,12 +203,12 @@ if st.button('Predict Weather'):
 
     #### Testing to overlay images
     img_back_gif = crop_image (carte, 'France_Nord')
-    st.write("Shape France Nord", img_back_gif.shape)
+
     img_france_nord = img_back_gif
-    st.image(img_back_gif)
+    #st.image(img_back_gif)
     img_back_gif = img_back_gif[::5, ::5, :]
 
-    st.image(img_back_gif)
+    #st.image(img_back_gif)
 
 
 
@@ -230,23 +230,5 @@ if st.button('Predict Weather'):
 
 
 
-    """
-    #### GIF GENERATION ####
-    #from PIL import Image
 
-    frames = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in frames]
-    frame_one = frames[0]
-    frame_one.save('gif_1.gif', format="GIF", append_images=frames,
-                   save_all=True, duration=10, loop=0)
-    st.image('gif_1.gif',use_column_width='always')
-
-    new_predictions_gif = np.squeeze(new_predictions2, axis=-1)
-    st.write("shape new predictions2 : ", new_predictions_gif .shape)
-    new_predictions_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in new_predictions_gif]
-    frame_one_pred = new_predictions_gif[0]
-    frame_one_pred.save('gif_2.gif', format="GIF", append_images=new_predictions_gif,
-                   save_all=True, duration=10, loop=0)
-    st.image('gif_2.gif', )
-
-    """
 
