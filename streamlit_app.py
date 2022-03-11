@@ -172,6 +172,7 @@ if st.button('Predict Weather'):
         # print("fra2 shape : ",one_frame.shape)
         new_predictions2[i] = one_frame
 
+    #### GIF GENERATION ####
     #from PIL import Image
     st.write("shape frames : ", np.array(frames).shape)
     frames = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in frames]
@@ -180,8 +181,9 @@ if st.button('Predict Weather'):
                    save_all=True, duration=10, loop=0)
     st.image('gif_1.gif',)
 
-    st.write("shape new predictions2 : ", new_predictions2.shape)
-    new_predictions_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in new_predictions2]
+    new_predictions_gif = np.squeeze(new_predictions2, axis=-1)
+    st.write("shape new predictions2 : ", new_predictions_gif .shape)
+    new_predictions_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in new_predictions_gif]
     frame_one_pred = new_predictions_gif[0]
     frame_one_pred.save('gif_2.gif', format="GIF", append_images=new_predictions_gif,
                    save_all=True, duration=10, loop=0)
