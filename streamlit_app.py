@@ -132,6 +132,8 @@ def scrapping_images (start, finish) :
         try :
             tmp = open_save_data(url, date_save)
             saved_images.append(tmp)
+            if len(saved_images)>=10:
+                break
 
 
         except UnidentifiedImageError :
@@ -142,7 +144,7 @@ def scrapping_images (start, finish) :
 if st.button('Scrapping'):
 
     start = datetime(2022, 1, 20, 18,00)
-    finish = datetime(2022, 1, 20, 20, 30)
+    finish = datetime(2022, 3, 20, 20, 30)
 
     frames = scrapping_images(start, finish)
     model = models.load_model("AJ_my_model_mse_long_11")
