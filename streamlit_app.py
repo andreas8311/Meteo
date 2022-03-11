@@ -195,11 +195,11 @@ if st.button('Predict Weather'):
     img_back_gif = crop_image (carte, 'France_Nord')
     st.image(img_back_gif)
     img_back_gif = img_back_gif[::5, ::5, :]
-    st.write(img_back_gif.shape)
+
     st.image(img_back_gif)
 
 
-    frames2 = np.expand_dims(np.array(frames),axis=3)
+    frames2 = np.expand_dims(np.array(new_predictions2),axis=3)
     st.write("frames shape : ", np.array(frames2).shape)
     img_back_gif = img_back_gif * np.ones((10, 84, 130, 3))
     img_back_gif = img_back_gif * (1 - frames2) + frames2
@@ -212,12 +212,12 @@ if st.button('Predict Weather'):
                    save_all=True, duration=10, loop=0)
     st.image('gif_4.gif', use_column_width='always')
 
-    st.write("here comes new overlay image shape:")
+
 
 
     #### GIF GENERATION ####
     #from PIL import Image
-    st.write("shape frames : ", np.array(frames).shape)
+
     frames = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in frames]
     frame_one = frames[0]
     frame_one.save('gif_1.gif', format="GIF", append_images=frames,
