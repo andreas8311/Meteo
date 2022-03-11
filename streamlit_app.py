@@ -153,16 +153,19 @@ if st.button('Predict Weather'):
     start = datetime(date_only.year, date_only.month, date_only.day, (time_only.hour)-3,00)
     finish = datetime(date_only.year, datetime.now().date().month, date_only.day, (time_only.hour)+1, 00)
 
-    st.write('Initial Images over France')
+
     frames, initial_images = scrapping_images(start, finish)
 
     #### GIF GENERATION for initial images ####
     # from PIL import Image
 
+    st.write('Radar images of last 2 hours 30 and minutes')
+    st.write(datetime.now())
+
     initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
     frame_one = initial_images[0]
     frame_one.save('gif_0.gif', format="GIF", append_images=initial_images,
-                   save_all=True, duration=10, loop=0, fps=3)
+                   save_all=True, duration=10, loop=0,)
     st.image('gif_0.gif', use_column_width='always')
 
     ### END OF GIF INITIAL GENERATION
