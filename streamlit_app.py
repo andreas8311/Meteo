@@ -184,15 +184,22 @@ if st.button('Predict Weather'):
     st.write("New Predictions shape : ", new_predictions.shape)
 
 
-    new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
+    #new_predictions2 = np.zeros(shape=(10, 420, 650,1)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
+    new_predictions2 = []
     st.write("New Predictions 2shape : ", new_predictions2.shape)
     for i in range(10):
         one_frame = new_predictions[i]
 
         one_frame = np.where(one_frame < 0.02, 0, one_frame*3.5)  # one_frame*2.5
 
-        #one_frame = cv.resize(one_frame, dsize=(420, 650), interpolation=cv.INTER_CUBIC)
-        new_predictions2[i] = one_frame
+        one_frame = cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
+        new_predictions2.append(one_frame)
+
+    new_predictions2 = np.array(new_predictions2)
+
+
+
+
 
     #### Testing to overlay images
     img_back_gif = crop_image (carte, 'France_Nord')
@@ -204,16 +211,19 @@ if st.button('Predict Weather'):
     st.image(img_back_gif)
 
 
+
+
+
     frames2 = np.array(new_predictions2)
     st.write("frames shape : ", np.array(frames2).shape)
-    img_back_gif = img_back_gif * np.ones((10, 84, 130, 3))
-    img_back_gif = img_back_gif * (1 - frames2) + frames2
+    img_france_nord= img_france_nord * np.ones((10, 420, 650, 3))
+    img_france_nord = img_france_nord * (1 - frames2) + frames2
 
     #### GIF GENERATION ####
 
-    img_back_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_back_gif]
-    frame_one = img_back_gif[0]
-    frame_one.save('gif_4.gif', format="GIF", append_images=img_back_gif,
+    img_france_nord = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_france_nord]
+    frame_one = img_france_nord[0]
+    frame_one.save('gif_4.gif', format="GIF", append_images=img_france_nord,
                    save_all=True, duration=10, loop=0)
     st.image('gif_4.gif', use_column_width='always')
 
