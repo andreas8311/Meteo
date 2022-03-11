@@ -225,7 +225,7 @@ if st.button('Predict Weather'):
     img_france_nord = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_france_nord]
     frame_one = img_france_nord[0]
     frame_one.save('gif_4.gif', format="GIF", append_images=img_france_nord,
-                   save_all=True, duration=10, loop=0, fps=1)
+                   save_all=True, duration=20, loop=0, fps=1)
     st.image('gif_4.gif', use_column_width='always')
 
 
