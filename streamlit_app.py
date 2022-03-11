@@ -114,8 +114,12 @@ def open_save_data(url, date_save):
     img_gray = lissage_image(img_gray)
     img_zoomX = crop_image(img_gray, 'France_Nord')
     img_zoomX = img_zoomX[::5, ::5]
-    st.image(img_zoomX, clamp=True)
-    return np.array(img_zoomX)
+    #st.image(img_zoomX, clamp=True)
+    model = models.load_model("AJ_my_model_mse_long_11")
+    img_zoomX = np.array(img_zoomX)
+    new_prediction = model.predict(np.expand_dims(img_zoomX, axis=0))
+    new_predictions = np.squeeze(new_prediction, axis=0)
+    return new_predictions
 
 def scrapping_images (start, finish) :
     """Scrape images radar en ligne toutes les 15 min
