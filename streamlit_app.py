@@ -176,6 +176,7 @@ if st.button('Predict Weather'):
 
     model = models.load_model("AJ_my_model_mse_long_11")
     st.header('And predicted images..')
+    st.write('for the next 2 hours and 30 minutes')
 
 
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
