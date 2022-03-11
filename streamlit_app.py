@@ -173,4 +173,5 @@ if st.button('Predict Weather'):
         current_frames = new_predictions2[i]
         current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
         st.write("Prediction number : ",i)
-        st.image((current_frames * 255).astype(np.uint8))
+        new_im = (current_frames * 255).astype(np.uint8)
+        st.image(new_im)
