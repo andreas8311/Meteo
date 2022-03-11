@@ -208,6 +208,13 @@ if st.button('Predict Weather'):
     img_back_gif = img_back_gif * np.ones((10, 84, 130, 3))
     img_back_gif = img_back_gif * (1 - frames2) + frames2
 
+    #### GIF GENERATION ####
+
+    img_back_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_back_gif]
+    frame_one = img_back_gif[0]
+    frame_one.save('gif_4.gif', format="GIF", append_images=frames,
+                   save_all=True, duration=10, loop=0)
+    st.image('gif_4.gif', use_column_width='always')
 
     st.write("here comes new overlay image shape:")
     st.write(img_back_gif.shape)
