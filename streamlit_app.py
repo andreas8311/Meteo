@@ -172,12 +172,18 @@ if st.button('Predict Weather'):
         # print("fra2 shape : ",one_frame.shape)
         new_predictions2[i] = one_frame
 
-
+    #### Testing to overlay images
     img_back_gif = crop_image (carte, 'France_Nord')
     st.image(img_back_gif)
     img_back_gif = img_back_gif[::5, ::5, :]
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
+
+    img_back_gif = img_back_gif * (1 - frames) + frames
+    img_back_gif = img_back_gif * np.ones((10, 768, 768, 3))
+
+    st.write("here comes new overlay image shape:")
+    st.write(img_back_gif.shape)
 
     #### GIF GENERATION ####
     #from PIL import Image
