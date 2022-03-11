@@ -181,7 +181,7 @@ if st.button('Predict Weather'):
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
     new_predictions = np.squeeze(new_prediction, axis=0)
     #new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
-    st.write("New Predictions shape : ", new_predictions.shape)
+
 
 
     #new_predictions2 = np.zeros(shape=(10, 420, 650,1)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
@@ -190,7 +190,7 @@ if st.button('Predict Weather'):
     for i in range(10):
         one_frame = new_predictions[i]
 
-        one_frame = np.where(one_frame < 0.02, 0, 0.8)  # one_frame*3.5
+        one_frame = np.where(one_frame < 0.02, 0, one_frame*4.5)  # one_frame*3.5
 
         one_frame = cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
         new_predictions2.append(one_frame)
@@ -216,7 +216,7 @@ if st.button('Predict Weather'):
 
     frames2 = np.array(new_predictions2)
     frames2 = np.expand_dims(frames2, axis=3)
-    st.write("frames shape : ", np.array(frames2).shape)
+
     img_france_nord= img_france_nord * np.ones((10, 420, 650, 3))
     img_france_nord = img_france_nord * (1 - frames2) + frames2
 
