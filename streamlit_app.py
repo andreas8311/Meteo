@@ -197,14 +197,16 @@ if st.button('Predict Weather'):
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
 
-    super_image = np.zeros((84, 130, 3))
-    super_image[:, :, 1] = frames
-    super_image[:, :, 2] = frames
-    super_image[:, :, 0] = frames
+    # P-E suggestion of how to create colors
+    #super_image = np.zeros((84, 130, 3))
+    #super_image[:, :, 1] = frames
+    #super_image[:, :, 2] = frames
+    #super_image[:, :, 0] = frames
 
-    st.write("frames shape : ", np.array(super_image).shape)
-    img_back_gif = img_back_gif * (1 - super_image) + super_image
-    img_back_gif = img_back_gif * np.ones((10, 768, 768, 3))
+    st.write("frames shape : ", np.array(frames).shape)
+    img_back_gif = img_back_gif * np.ones((10, 84, 130, 3))
+    img_back_gif = img_back_gif * (1 - frames) + frames
+
 
     st.write("here comes new overlay image shape:")
     st.write(img_back_gif.shape)
