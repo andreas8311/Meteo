@@ -182,7 +182,7 @@ if st.button('Predict Weather'):
     st.write("This is the shape : ", new_predictions.shape)
 
 
-    new_predictions2 = np.zeros(shape=(10, 420, 650,3)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
+    new_predictions2 = np.zeros(shape=(10, 420, 650,1)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
     for i in range(10):
         one_frame = new_predictions[i]
 
@@ -198,11 +198,6 @@ if st.button('Predict Weather'):
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
 
-    # P-E suggestion of how to create colors
-    #super_image = np.zeros((84, 130, 3))
-    #super_image[:, :, 1] = frames
-    #super_image[:, :, 2] = frames
-    #super_image[:, :, 0] = frames
 
     frames2 = np.expand_dims(np.array(frames),axis=3)
     st.write("frames shape : ", np.array(frames2).shape)
