@@ -15,7 +15,7 @@ import cv2 as cv
 from tensorflow.keras import models
 
 
-carte = mpimg.imread("carte_test.png")
+carte = mpimg.imread("carte_test2.png")
 cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
        2:[97,219,241],
        3:[76,147,240],
