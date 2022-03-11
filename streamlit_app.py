@@ -168,4 +168,5 @@ if st.button('Scrapping'):
 
     for i in range(10):
         current_frames = new_predictions2[i]
+        st.write(current_frames.shape)
         st.image((current_frames * 255).astype(np.uint8))
