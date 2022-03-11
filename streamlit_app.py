@@ -173,7 +173,7 @@ if st.button('Predict Weather'):
         new_predictions2[i] = one_frame
 
     #from PIL import Image
-    st.write("shape frames : ", frames.shape)
+    st.write("shape frames : ", np.array(frames).shape)
     frames = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in frames]
     frame_one = frames[0]
     frame_one.save('gif_1.gif', format="GIF", append_images=frames,
