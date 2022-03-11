@@ -9,8 +9,9 @@ from io import BytesIO
 #import matplotlib.image as mpimg
 from copy import copy
 import cv2 as cv
-import tensorflow as tf
-from tensorflow.keras import models
+#import tensorflow as tf
+#from tensorflow.keras import models
+from keras import models
 
 carte = cv.imread("carte_test.png")
 cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
