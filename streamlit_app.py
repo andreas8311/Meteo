@@ -162,7 +162,7 @@ if st.button('Scrapping'):
     for i in range(10):
         one_frame = new_predictions[i]
 
-        one_frame = np.where(one_frame < 0.2, 0, one_frame*3)  # one_frame*2.5
+        one_frame = np.where(one_frame < 0.01, 0, one_frame*5)  # one_frame*2.5
         # print("fra2 shape : ",one_frame.shape)
         new_predictions2[i] = one_frame
 
