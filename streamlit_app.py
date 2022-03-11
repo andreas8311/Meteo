@@ -190,7 +190,7 @@ if st.button('Predict Weather'):
     for i in range(10):
         one_frame = new_predictions[i]
 
-        one_frame = np.where(one_frame < 0.1, 0, one_frame*3)  # <0.02 one_frame*3.5
+        one_frame = np.where(one_frame < 0.05, 0, one_frame*3)  # <0.02 one_frame*3.5
 
         one_frame = cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
         new_predictions2.append(one_frame)
