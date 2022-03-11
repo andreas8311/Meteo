@@ -33,7 +33,7 @@ cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
 
 
 
-st.title("Predicting Weather over North of France")
+st.title("Predicting Rain - North of France")
 
 
 
@@ -160,7 +160,7 @@ if st.button('Predict Weather'):
     # from PIL import Image
 
     st.write('Radar images of last 2 hours 30 and minutes')
-    st.write(datetime.now())
+    st.write(datetime.date()," " ,(datetime.time().hour)+1, " ",datetime.time().minute)
 
     initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
     frame_one = initial_images[0]
