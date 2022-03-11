@@ -168,7 +168,7 @@ if st.button('Predict Weather'):
     initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
     frame_one = initial_images[0]
     frame_one.save('gif_0.gif', format="GIF", append_images=initial_images,
-                   save_all=True, duration=10, loop=0,)
+                   save_all=True, duration=10, loop=5)
     st.image('gif_0.gif', use_column_width='always')
 
     ### END OF GIF INITIAL GENERATION ##################
