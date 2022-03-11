@@ -11,7 +11,7 @@ from copy import copy
 #import tensorflow as tf
 import cv2 as cv
 
-#from tensorflow.keras import models
+from tensorflow.keras import models
 
 
 carte = mpimg.imread("carte_test.png")
