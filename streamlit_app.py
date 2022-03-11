@@ -107,9 +107,9 @@ def open_save_data(url, date_save):
 
     response = requests.get(url)
 
-    img = Image.open(BytesIO(response.content))
-    st.image(img) # This is showing the image on the screen
-    img = retirer_carte_fond(img, carte)
+    initial_im = Image.open(BytesIO(response.content))
+    st.image(initial_im) # This is showing the image on the screen
+    img = retirer_carte_fond(initial_im, carte)
     img = retirer_txt(img)
     img_gray = colors2grays(img)
     img_gray = lissage_image(img_gray)
@@ -117,13 +117,14 @@ def open_save_data(url, date_save):
     img_zoomX = img_zoomX[::5, ::5]
     #st.image(img_zoomX, clamp=True)
 
-    return np.array(img_zoomX)
+    return np.array(img_zoomX), np.array(initial_im)
 
 def scrapping_images (start, finish) :
     """Scrape images radar en ligne toutes les 15 min
     entre deux dates donnees sous forme de datetime.datetime
     Sauvegarde les dates pour lesquelles la page n'existe pas.  """
 
+    initial_images = []
     saved_images = []
     for (an, mois, jour, heure, minute) in iteration_15min(start, finish):
         ## url scrapping :
@@ -131,19 +132,19 @@ def scrapping_images (start, finish) :
         date_save = f'{an}_{mois}_{jour}_{heure}{minute}'
 
         try :
-            tmp = open_save_data(url, date_save)
-            st.image(tmp)
-            saved_images.append(tmp)
-            #if len(saved_images)>=10:
-                #break
+            preproc_im, initial_im = open_save_data(url, date_save)
+            st.image(preproc_im)
+            saved_images.append(preproc_im) # Preproc Images
+            initial_images.append(initial_im)
 
 
         except UnidentifiedImageError :
             print (date_save, ' --> Missing data')
             break
 
+    initial_images = initial_images[-10:]
     saved_images = saved_images[-10:]
-    return saved_images
+    return saved_images, initial_images
 
 if st.button('Predict Weather'):
 
@@ -153,7 +154,19 @@ if st.button('Predict Weather'):
     finish = datetime(date_only.year, datetime.now().date().month, date_only.day, (time_only.hour)+1, 00)
 
     st.write('Initial Images over France')
-    frames = scrapping_images(start, finish)
+    frames, initial_images = scrapping_images(start, finish)
+
+    #### GIF GENERATION for initial images ####
+    # from PIL import Image
+
+    initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
+    frame_one = initial_images[0]
+    frame_one.save('gif_0.gif', format="GIF", append_images=initial_images,
+                   save_all=True, duration=10, loop=0)
+    st.image('gif_0.gif', use_column_width='always')
+
+    ### END OF GIF INITIAL GENERATION
+
     model = models.load_model("AJ_my_model_mse_long_11")
     st.header('And predicted images..')
 
