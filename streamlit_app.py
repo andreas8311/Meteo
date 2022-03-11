@@ -160,7 +160,9 @@ if st.button('Predict Weather'):
     # from PIL import Image
 
     st.write('Radar images of last 2 hours 30 and minutes')
-    st.write(datetime.date()," " ,(datetime.time().hour)+1, " ",datetime.time().minute)
+    st.write(datetime.date())
+    st.write(str((datetime.time().hour)+1), " ",str(datetime.time().minute))
+
 
     initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
     frame_one = initial_images[0]
