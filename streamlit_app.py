@@ -215,6 +215,7 @@ if st.button('Predict Weather'):
 
 
     frames2 = np.array(new_predictions2)
+    frames2 = np.expand_dims(frames2, axis=3)
     st.write("frames shape : ", np.array(frames2).shape)
     img_france_nord= img_france_nord * np.ones((10, 420, 650, 3))
     img_france_nord = img_france_nord * (1 - frames2) + frames2
