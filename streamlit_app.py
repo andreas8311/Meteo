@@ -134,13 +134,15 @@ def scrapping_images (start, finish) :
             tmp = open_save_data(url, date_save)
             st.image(tmp)
             saved_images.append(tmp)
-            if len(saved_images)>=10:
-                break
+            #if len(saved_images)>=10:
+                #break
 
 
         except UnidentifiedImageError :
             print (date_save, ' --> Missing data')
+            break
 
+    saved_images = saved_images[-10:]
     return saved_images
 
 if st.button('Predict Weather'):
