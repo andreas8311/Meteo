@@ -176,5 +176,5 @@ if st.button('Predict Weather'):
         new_im = (current_frames * 255).astype(np.uint8)
 
         new_im = cv.pyrUp(new_im)
-        new_im = cv.pyrUp(new_im)
+
         st.image(new_im)
