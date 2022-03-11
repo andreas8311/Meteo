@@ -168,5 +168,6 @@ if st.button('Scrapping'):
 
     for i in range(10):
         current_frames = new_predictions2[i]
+        current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
         st.write(current_frames.shape)
         st.image((current_frames * 255).astype(np.uint8))
