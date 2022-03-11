@@ -174,6 +174,6 @@ if st.button('Predict Weather'):
         current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
         st.write("Prediction number : ",i)
         new_im = (current_frames * 255).astype(np.uint8)
-        c = Image.open(new_im)
-        d = c.resize((84*5, 130*5),1)
-        st.image(d)
+
+        dst = cv.pyrUp(new_im)
+        st.image(dst)
