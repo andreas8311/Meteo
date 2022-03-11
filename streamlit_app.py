@@ -147,6 +147,7 @@ if st.button('Scrapping'):
     start = datetime(2022, 2, 20, 18,00)
     finish = datetime(2022, 3, 20, 20, 30)
 
+    st.write('Initial Images over France and treated over North of France')
     frames = scrapping_images(start, finish)
     model = models.load_model("AJ_my_model_mse_long_11")
     st.write('And predicted images..')
@@ -170,5 +171,5 @@ if st.button('Scrapping'):
     for i in range(10):
         current_frames = new_predictions2[i]
         current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
-        st.write(current_frames.shape)
+        st.write("Prediction number : ",i)
         st.image((current_frames * 255).astype(np.uint8))
