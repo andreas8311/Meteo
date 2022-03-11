@@ -33,7 +33,7 @@ cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
 
 
 
-st.title("Predicting Weather over IDF")
+st.title("Predicting Weather over North of France")
 
 
 
@@ -178,7 +178,15 @@ if st.button('Predict Weather'):
     frame_one = frames[0]
     frame_one.save('gif_1.gif', format="GIF", append_images=frames,
                    save_all=True, duration=10, loop=0)
-    st.image('gif_1.gif')
+    st.image('gif_1.gif',)
+
+    new_predictions_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in new_predictions2]
+    frame_one_pred = new_predictions2[0]
+    frame_one_pred.save('gif_2.gif', format="GIF", append_images=new_predictions_gif,
+                   save_all=True, duration=10, loop=0)
+    st.image('gif_2.gif', )
+
+
 
     for i in range(10):
         current_frames = new_predictions2[i]
