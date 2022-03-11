@@ -161,7 +161,7 @@ if st.button('Predict Weather'):
 
     st.write('Radar images of last 2 hours 30 and minutes')
     st.write(datetime.date())
-    st.write(str((datetime.time().hour)+1), " ",str(datetime.time().minute))
+    st.write((datetime.time().hour)+1)
 
 
     initial_images = [Image.fromarray(np.uint8((frame).astype(int))) for frame in initial_images]
