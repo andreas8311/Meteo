@@ -159,8 +159,8 @@ if st.button('Predict Weather'):
     #### GIF GENERATION for initial images ####
     # from PIL import Image
 
-    st.write('Radar images of last 2 hours 30 and minutes')
-    st.write("Time now :",str(datetime.now().date()), ": ", str((datetime.now().time().hour)+1),"h ",str(datetime.now().time().minute), "m")
+    st.write('Radar images of last 2 hours and 30 minutes')
+    st.write("Time at generation :",str(datetime.now().date()), ": ", str((datetime.now().time().hour)+1),"h ",str(datetime.now().time().minute), "m")
     #st.write((datetime.now().time().hour)+1, " ", datetime.now().time().minute)
 
 
@@ -196,8 +196,14 @@ if st.button('Predict Weather'):
     img_back_gif = img_back_gif[::5, ::5, :]
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
-    st.write("frames shape : ", np.array(frames).shape)
-    img_back_gif = img_back_gif * (1 - frames) + frames
+
+    super_image = np.zeros((420, 650, 3))
+    super_image[:, :, :, 1] = frames
+    super_image[:, :, :, 2] = frames
+    super_image[:, :, :, 0] = frames
+
+    st.write("frames shape : ", np.array(super_image).shape)
+    img_back_gif = img_back_gif * (1 - super_image) + super_image
     img_back_gif = img_back_gif * np.ones((10, 768, 768, 3))
 
     st.write("here comes new overlay image shape:")
