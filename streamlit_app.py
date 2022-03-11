@@ -212,7 +212,7 @@ if st.button('Predict Weather'):
 
     img_back_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_back_gif]
     frame_one = img_back_gif[0]
-    frame_one.save('gif_4.gif', format="GIF", append_images=frames,
+    frame_one.save('gif_4.gif', format="GIF", append_images=img_back_gif,
                    save_all=True, duration=10, loop=0)
     st.image('gif_4.gif', use_column_width='always')
 
