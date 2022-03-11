@@ -172,6 +172,11 @@ if st.button('Predict Weather'):
         # print("fra2 shape : ",one_frame.shape)
         new_predictions2[i] = one_frame
 
+
+    img_back_gif = crop_image (carte, 'France_Nord')
+
+    st.image(img_back_gif)
+
     #### GIF GENERATION ####
     #from PIL import Image
     st.write("shape frames : ", np.array(frames).shape)
