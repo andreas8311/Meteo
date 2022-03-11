@@ -107,7 +107,7 @@ def open_save_data(url, date_save):
     response = requests.get(url)
 
     img = Image.open(BytesIO(response.content))
-    #st.image(img) # This is showing the image on the screen
+    st.image(img) # This is showing the image on the screen
     img = retirer_carte_fond(img, carte)
     img = retirer_txt(img)
     img_gray = colors2grays(img)
@@ -131,6 +131,7 @@ def scrapping_images (start, finish) :
 
         try :
             tmp = open_save_data(url, date_save)
+            st.image(tmp)
             saved_images.append(tmp)
             if len(saved_images)>=10:
                 break
