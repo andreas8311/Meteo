@@ -198,9 +198,9 @@ if st.button('Predict Weather'):
     st.image(img_back_gif)
 
     super_image = np.zeros((420, 650, 3))
-    super_image[:, :, :, 1] = frames
-    super_image[:, :, :, 2] = frames
-    super_image[:, :, :, 0] = frames
+    super_image[:, :, 1] = frames
+    super_image[:, :, 2] = frames
+    super_image[:, :, 0] = frames
 
     st.write("frames shape : ", np.array(super_image).shape)
     img_back_gif = img_back_gif * (1 - super_image) + super_image
