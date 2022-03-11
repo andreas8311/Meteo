@@ -190,7 +190,7 @@ if st.button('Predict Weather'):
     for i in range(10):
         one_frame = new_predictions[i]
 
-        one_frame = np.where(one_frame < 0.02, 0, one_frame*4.5)  # one_frame*3.5
+        one_frame = np.where(one_frame < 0.02, 0, one_frame*4)  # one_frame*3.5
 
         one_frame = cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
         new_predictions2.append(one_frame)
@@ -225,7 +225,7 @@ if st.button('Predict Weather'):
     img_france_nord = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in img_france_nord]
     frame_one = img_france_nord[0]
     frame_one.save('gif_4.gif', format="GIF", append_images=img_france_nord,
-                   save_all=True, duration=2, loop=0, fps=1)
+                   save_all=True, duration=10, loop=0)
     st.image('gif_4.gif', use_column_width='always')
 
 
