@@ -157,18 +157,18 @@ if st.button('Scrapping'):
     #new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
     st.write(new_predictions.shape)
 
-    """
+
     new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
     for i in range(10):
         one_frame = new_predictions[i]
 
-        one_frame = np.where(one_frame < 0.2, 0, 0.8)  # one_frame*2.5
+        one_frame = np.where(one_frame < 0.2, 0, one_frame*3)  # one_frame*2.5
         # print("fra2 shape : ",one_frame.shape)
         new_predictions2[i] = one_frame
-    """
+
 
     for i in range(10):
-        current_frames = new_predictions[i]
+        current_frames = new_predictions2[i]
         current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
         st.write(current_frames.shape)
         st.image((current_frames * 255).astype(np.uint8))
