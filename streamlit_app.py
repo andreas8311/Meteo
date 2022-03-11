@@ -217,7 +217,7 @@ if st.button('Predict Weather'):
     st.image('gif_4.gif', use_column_width='always')
 
     st.write("here comes new overlay image shape:")
-    st.write(img_back_gif.shape)
+
 
     #### GIF GENERATION ####
     #from PIL import Image
