@@ -154,7 +154,7 @@ if st.button('Scrapping'):
 
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
     new_predictions = np.squeeze(new_prediction, axis=0)
-    new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
+    #new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
     st.write(new_predictions.shape)
 
     new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
