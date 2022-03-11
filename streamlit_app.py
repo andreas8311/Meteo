@@ -179,7 +179,7 @@ if st.button('Predict Weather'):
     frame_one = frames[0]
     frame_one.save('gif_1.gif', format="GIF", append_images=frames,
                    save_all=True, duration=10, loop=0)
-    st.image('gif_1.gif',)
+    st.image('gif_1.gif',use_column_width='always')
 
     new_predictions_gif = np.squeeze(new_predictions2, axis=-1)
     st.write("shape new predictions2 : ", new_predictions_gif .shape)
