@@ -34,7 +34,7 @@ cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
 
 
 st.title("Predicting Weather over IDF")
-st.image(carte)
+
 
 
 def retirer_carte_fond (img, carte):
