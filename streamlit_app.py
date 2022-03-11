@@ -8,8 +8,9 @@ import numpy as np
 from io import BytesIO
 import matplotlib.image as mpimg
 from copy import copy
-import opencv
 #import tensorflow as tf
+import cv2 as cv
+
 #from tensorflow.keras import models
 
 
