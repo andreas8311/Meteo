@@ -175,5 +175,5 @@ if st.button('Predict Weather'):
         st.write("Prediction number : ",i)
         new_im = (current_frames * 255).astype(np.uint8)
         c = Image.open(new_im)
-        d = c.resize(84*5, 130*5)
+        d = c.resize((84*5, 130*5),1)
         st.image(d)
