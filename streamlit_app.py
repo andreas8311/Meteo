@@ -230,7 +230,7 @@ if st.button('Predict Weather'):
 
 
 
-
+    """
     #### GIF GENERATION ####
     #from PIL import Image
 
@@ -248,13 +248,5 @@ if st.button('Predict Weather'):
                    save_all=True, duration=10, loop=0)
     st.image('gif_2.gif', )
 
-
-    #### THIS LAST PART IS USELESS AND SHOULD PROBABLY BE DELETED (WAS FOR PRINTING PREDICTIONS)
-    for i in range(10):
-        current_frames = new_predictions2[i]
-        current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
-
-        new_im = (current_frames * 255).astype(np.uint8)
-
-        new_im = cv.pyrUp(new_im)
+    """
 
