@@ -10,7 +10,7 @@ from io import BytesIO
 from copy import copy
 import cv2 as cv
 
-# from tensorflow.keras import models
+from tensorflow.keras import models
 
 carte = cv.imread("carte_test.png")
 cols = {1:[209,251,252],    ## Couleurs de l'echelle d'intensite de pluie (mm/h)
