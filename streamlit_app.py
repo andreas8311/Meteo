@@ -179,15 +179,16 @@ if st.button('Predict Weather'):
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
     new_predictions = np.squeeze(new_prediction, axis=0)
     #new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
-    st.write(new_predictions.shape)
+    st.write("This is the shape : ", new_predictions.shape)
 
 
-    new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
+    new_predictions2 = np.zeros(shape=(10, 420, 650,3)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
     for i in range(10):
         one_frame = new_predictions[i]
 
         one_frame = np.where(one_frame < 0.02, 0, one_frame*3.5)  # one_frame*2.5
         # print("fra2 shape : ",one_frame.shape)
+        cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
         new_predictions2[i] = one_frame
 
     #### Testing to overlay images
