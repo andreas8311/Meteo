@@ -8,7 +8,7 @@ import numpy as np
 from io import BytesIO
 #import matplotlib.image as mpimg
 from copy import copy
-import cv2   #  as cv
+import cv2   as cv
 #import tensorflow as tf
 #from tensorflow.keras import models
 
