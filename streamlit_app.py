@@ -145,8 +145,10 @@ def scrapping_images (start, finish) :
 
 if st.button('Predict Weather'):
 
-    start = datetime(2022, 2, 20, 18,00)
-    finish = datetime(2022, 3, 20, 20, 30)
+    date_only = datetime.now().date()
+    time_only = datetime.now().time()
+    start = datetime(date_only.year, date_only.month, date_only.day, (time_only.hour)-3,00)
+    finish = datetime(date_only.year, datetime.now().date().month, date_only.day, (time_only.hour)+1, 00)
 
     st.write('Initial Images over France')
     frames = scrapping_images(start, finish)
