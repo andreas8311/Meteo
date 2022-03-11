@@ -156,7 +156,8 @@ if st.button('Predict Weather'):
 
     frames, initial_images = scrapping_images(start, finish)
 
-    #### GIF GENERATION for initial images ####
+    ################################################
+    #### GIF GENERATION for initial images ########
     # from PIL import Image
 
     st.write('Radar images of last 2 hours and 30 minutes')
@@ -170,7 +171,8 @@ if st.button('Predict Weather'):
                    save_all=True, duration=10, loop=0,)
     st.image('gif_0.gif', use_column_width='always')
 
-    ### END OF GIF INITIAL GENERATION
+    ### END OF GIF INITIAL GENERATION ##################
+    ####################################################
 
     model = models.load_model("AJ_my_model_mse_long_11")
     st.header('And predicted images..')
@@ -233,14 +235,12 @@ if st.button('Predict Weather'):
     st.image('gif_2.gif', )
 
 
-
+    #### THIS LAST PART IS USELESS AND SHOULD PROBABLY BE DELETED (WAS FOR PRINTING PREDICTIONS)
     for i in range(10):
         current_frames = new_predictions2[i]
         current_frames= np.squeeze(current_frames, axis=-1) # Should normally not be there
-        st.write("Prediction number : ",i)
+
         new_im = (current_frames * 255).astype(np.uint8)
 
         new_im = cv.pyrUp(new_im)
-        st.write(new_im.shape)
 
-        st.image(new_im)
