@@ -174,7 +174,8 @@ if st.button('Predict Weather'):
 
 
     img_back_gif = crop_image (carte, 'France_Nord')
-
+    st.image(img_back_gif)
+    img_back_gif = img_back_gif[::5, ::5, :]
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
 
