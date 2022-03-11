@@ -10,6 +10,7 @@ import matplotlib.image as mpimg
 from copy import copy
 #import tensorflow as tf
 import cv2 as cv
+from IPython.display import Image
 
 from tensorflow.keras import models
 
