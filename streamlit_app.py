@@ -142,15 +142,15 @@ def scrapping_images (start, finish) :
 
     return saved_images
 
-if st.button('Scrapping'):
+if st.button('Predict Weather'):
 
     start = datetime(2022, 2, 20, 18,00)
     finish = datetime(2022, 3, 20, 20, 30)
 
-    st.write('Initial Images over France and treated over North of France')
+    st.write('Initial Images over France')
     frames = scrapping_images(start, finish)
     model = models.load_model("AJ_my_model_mse_long_11")
-    st.write('And predicted images..')
+    st.header('And predicted images..')
 
 
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
