@@ -178,7 +178,7 @@ if st.button('Predict Weather'):
     img_back_gif = img_back_gif[::5, ::5, :]
     st.write(img_back_gif.shape)
     st.image(img_back_gif)
-    st.write("frames shape : ", frames.shape)
+    st.write("frames shape : ", np.array(frames).shape)
     img_back_gif = img_back_gif * (1 - frames) + frames
     img_back_gif = img_back_gif * np.ones((10, 768, 768, 3))
 
