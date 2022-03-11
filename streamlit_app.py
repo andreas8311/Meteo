@@ -181,7 +181,7 @@ if st.button('Predict Weather'):
     st.image('gif_1.gif',)
 
     new_predictions_gif = [Image.fromarray(np.uint8((frame * 255).astype(int))) for frame in new_predictions2]
-    frame_one_pred = new_predictions2[0]
+    frame_one_pred = new_predictions_gif[0]
     frame_one_pred.save('gif_2.gif', format="GIF", append_images=new_predictions_gif,
                    save_all=True, duration=10, loop=0)
     st.image('gif_2.gif', )
