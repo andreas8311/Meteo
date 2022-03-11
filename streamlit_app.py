@@ -195,6 +195,8 @@ if st.button('Predict Weather'):
 
     #### Testing to overlay images
     img_back_gif = crop_image (carte, 'France_Nord')
+    st.write("Shape France Nord", img_back_gif.shape)
+    img_france_nord = img_back_gif
     st.image(img_back_gif)
     img_back_gif = img_back_gif[::5, ::5, :]
 
