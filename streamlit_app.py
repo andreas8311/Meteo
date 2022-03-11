@@ -149,7 +149,9 @@ if st.button('Scrapping'):
 
     frames = scrapping_images(start, finish)
     model = models.load_model("AJ_my_model_mse_long_11")
-
+    st.write('And predicted images..')
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
     new_predictions = np.squeeze(new_prediction, axis=0)
+    for i in range(10):
+        st.image(new_predictions[i])
     st.write(new_predictions.shape)
