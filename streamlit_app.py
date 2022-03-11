@@ -188,7 +188,7 @@ if st.button('Predict Weather'):
 
         one_frame = np.where(one_frame < 0.02, 0, one_frame*3.5)  # one_frame*2.5
         # print("fra2 shape : ",one_frame.shape)
-        one_frame = cv.resize(one_frame, dsize=(650, 420), interpolation=cv.INTER_CUBIC)
+        one_frame = cv.resize(one_frame, dsize=(420, 650), interpolation=cv.INTER_CUBIC)
         new_predictions2[i] = one_frame
 
     #### Testing to overlay images
