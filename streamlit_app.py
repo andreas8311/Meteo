@@ -186,7 +186,7 @@ if st.button('Predict Weather'):
 
     #new_predictions2 = np.zeros(shape=(10, 420, 650,1)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
     new_predictions2 = []
-    st.write("New Predictions 2shape : ", new_predictions2.shape)
+
     for i in range(10):
         one_frame = new_predictions[i]
 
