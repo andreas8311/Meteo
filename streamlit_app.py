@@ -108,7 +108,7 @@ def open_save_data(url, date_save):
     response = requests.get(url)
 
     initial_im = Image.open(BytesIO(response.content))
-    st.image(initial_im) # This is showing the image on the screen
+    # st.image(initial_im) # This is showing the image on the screen
     img = retirer_carte_fond(initial_im, carte)
     img = retirer_txt(img)
     img_gray = colors2grays(img)
@@ -133,7 +133,7 @@ def scrapping_images (start, finish) :
 
         try :
             preproc_im, initial_im = open_save_data(url, date_save)
-            st.image(preproc_im)
+            # st.image(preproc_im)
             saved_images.append(preproc_im) # Preproc Images
             initial_images.append(initial_im)
 
