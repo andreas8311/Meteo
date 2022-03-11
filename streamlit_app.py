@@ -181,10 +181,11 @@ if st.button('Predict Weather'):
     new_prediction = model.predict(np.expand_dims(frames, axis=0))
     new_predictions = np.squeeze(new_prediction, axis=0)
     #new_predictions = np.squeeze(new_predictions, axis=-1) # Should normally not be there
-    st.write("This is the shape : ", new_predictions.shape)
+    st.write("New Predictions shape : ", new_predictions.shape)
 
 
     new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape)) # new_predictions2 = np.zeros(shape=(10, *new_predictions[0].shape))
+    st.write("New Predictions 2shape : ", new_predictions2.shape)
     for i in range(10):
         one_frame = new_predictions[i]
 
