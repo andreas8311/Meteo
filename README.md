@@ -20,5 +20,5 @@ The Deep Learning model behind the scene uses a particular layer system called C
 The model has been trained on rainy sequences in France over the last years
 
 <div id="header" align="center">
-  <img src="https://github.com/andreas8311/Meteo/blob/master/FranceGif.gif?raw=true" width="100"/>
+  <img src="https://github.com/andreas8311/Meteo/blob/master/PreprocGif.gif?raw=true" width="200"/>
 </div>
