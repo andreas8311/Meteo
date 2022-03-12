@@ -1,4 +1,4 @@
-# Meteo
+# Meteo :cloud_with_rain:
 
 Simple front end to an advanced nowcasting (rain prediction) data science project initially developed as final project at Le Wagon Data Science bootcamp.
 
