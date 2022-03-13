@@ -150,8 +150,20 @@ if st.button('Predict Weather'):
 
     date_only = datetime.now().date()
     time_only = datetime.now().time()
-    start = datetime(date_only.year, date_only.month, date_only.day, (time_only.hour)-3,00)
-    finish = datetime(date_only.year, datetime.now().date().month, date_only.day, (time_only.hour)+1, 00)
+    date_day_start = date_only.day
+    date_day_finish = date_only.day
+
+    hour_now = time_only.hour
+    hour_start = hour_now-3
+    hour_finish = hour_now+1
+    if hour_now==23:
+        hour_finish = 0
+        date_day_finish+=1
+    elif hour_now<=2:
+        hour_start = hour_now+24-3
+        date_day_start = date_only.day -1
+    start = datetime(date_only.year, date_only.month, date_day_start, hour_start,00)
+    finish = datetime(date_only.year, datetime.now().date().month, date_day_finish, hour_finish, 00)
 
 
     frames, initial_images = scrapping_images(start, finish)
